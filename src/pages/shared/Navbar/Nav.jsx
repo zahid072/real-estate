@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const Nav = () => {
+  const { user } = useContext(AuthContext);
+
+
+  const handleSignOut = ()=>{
+    
+  }
   const navLink = (
     <>
       <li>
         <NavLink to={"/"}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/updateProfile"}>Update Profile</NavLink>
       </li>
       <li>
         <NavLink to={"/about"}>About</NavLink>
@@ -38,11 +48,14 @@ const Nav = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navLink}
-              <Link to={"/signIn"}>
-                <button className="btn mt-2 md:hidden block">Sign In</button>
-              </Link>
 
-              <button className="btn md:hidden mt-2 block">Sign Out</button>
+              {user ? (
+                <button onClick={handleSignOut} className="btn md:hidden mt-2 block">Sign Out</button>
+              ) : (
+                <Link to={"/signIn"}>
+                  <button  className="btn mt-2 md:hidden block">Sign In</button>
+                </Link>
+              )}
             </ul>
           </div>
           <a className="md:text-2xl text-xl font-semibold text-nowrap">
@@ -54,11 +67,13 @@ const Nav = () => {
         </div>
         <div className="navbar-end">
           <img className="h-8 rounded-full mr-2" src="" alt="" />
-          <Link to={"/signIn"}>
-            <button className="btn hidden md:block">Sign In</button>
-          </Link>
-
-          <button className="btn hidden md:block">Sign Out</button>
+          {user ? (
+            <button onClick={handleSignOut} className="btn hidden md:block">Sign Out</button>
+          ) : (
+            <Link to={"/signIn"}>
+              <button className="btn hidden md:block">Sign In</button>
+            </Link>
+          )}
         </div>
       </div>
     </>

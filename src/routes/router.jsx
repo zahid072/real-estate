@@ -6,6 +6,7 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage'
 import SignIn from '../pages/auth/SignIn'
 import SignUp from '../pages/auth/SignUp'
 import About from '../pages/about/About'
+import UpdateProfile from '../pages/updateProfile/UpdateProfile'
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,14 @@ const router = createBrowserRouter([
                 element:<Home/>
             },
             {
+                path:"/about",
+                element:<About/>
+            },
+            {
+                path:"/updateProfile",
+                element:<UpdateProfile/>
+            },
+            {
                 path:"/signIn",
                 element:<SignIn/>
             },
@@ -25,10 +34,7 @@ const router = createBrowserRouter([
                 path:"/signUp",
                 element:<SignUp/>
             },
-            {
-                path:"/about",
-                element:<About/>
-            },
+           
         ]
     }
 ])
