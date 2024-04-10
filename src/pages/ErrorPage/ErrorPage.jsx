@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const ErrorPage = () => {
   return (
-    <div className=" h-screen">
+    <div className="h-screen -mt-10">
     <div className="bg-cover bg-center size-[700px] mx-auto flex justify-center items-end">
       <img src="https://i.ibb.co/D4CKSnx/404-page.gif" alt="" />
       <div className=" absolute">

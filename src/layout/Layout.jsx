@@ -5,11 +5,13 @@ import Footer from '../pages/shared/footer/Footer'
 
 const Layout = () => {
   return (
-    <div className='max-w-7xl lg:mx-auto mx-2'>
-        <div>
+    <div >
+        <div className='max-w-[1490px] lg:mx-auto mx-2'>
             <Nav/>
         </div>
+      <div className='max-w-[1490px] lg:mx-auto mx-2'>
       <Outlet/>
+      </div>
       <div>
         <Footer/>
       </div>

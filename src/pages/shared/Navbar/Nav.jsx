@@ -1,23 +1,26 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Nav = () => {
   const navLink = (
     <>
       <li>
-        <NavLink>Home</NavLink>
+        <NavLink to={"/"}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/about"}>About</NavLink>
       </li>
     </>
   );
   return (
     <>
-      <div className="navbar px-0 bg-base-100">
+      <div className="navbar px-0 bg-base-100 mt-4">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-5 w-5 mr-2"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -35,16 +38,27 @@ const Nav = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navLink}
+              <Link to={"/signIn"}>
+                <button className="btn mt-2 md:hidden block">Sign In</button>
+              </Link>
+
+              <button className="btn md:hidden mt-2 block">Sign Out</button>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Universal Estate Network</a>
+          <a className="md:text-2xl text-xl font-semibold text-nowrap">
+            Universal Estate Network
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLink}</ul>
         </div>
         <div className="navbar-end">
           <img className="h-8 rounded-full mr-2" src="" alt="" />
-          <button className="btn hidden md:block">Sign In</button>
+          <Link to={"/signIn"}>
+            <button className="btn hidden md:block">Sign In</button>
+          </Link>
+
+          <button className="btn hidden md:block">Sign Out</button>
         </div>
       </div>
     </>
