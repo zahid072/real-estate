@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {Helmet} from "react-helmet";
 
 const UpdateProfile = () => {
   const Navigate = useNavigate();
@@ -20,7 +21,7 @@ const UpdateProfile = () => {
     }
     if (!name && !photo) {
       setError(`Please provide "name" or "photo url"`);
-      return
+      return;
     }
     setError("");
     updateUserProfile(name, photo)
@@ -33,6 +34,11 @@ const UpdateProfile = () => {
   };
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Update Profile</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content w-full md:w-96">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

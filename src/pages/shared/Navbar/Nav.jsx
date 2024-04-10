@@ -29,7 +29,7 @@ const Nav = () => {
             <div tabIndex={0} role="button" className="lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-2"
+                className="md:size-9 size-6  mr-2"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -62,9 +62,12 @@ const Nav = () => {
               )}
             </ul>
           </div>
-          <a className="md:text-2xl text-xl font-semibold text-nowrap">
-            Universal Estate Network
-          </a>
+
+          <img
+            src="https://i.ibb.co/Zxb9JWv/logo2.png"
+            className="lg:h-20 md:h-12 h-10"
+            alt=""
+          />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLink}</ul>

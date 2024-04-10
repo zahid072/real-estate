@@ -8,7 +8,7 @@
       "price": "$10,000 per month",
       "status": "Rent",
       "area": "5000 sq ft",
-      "location": "Business District",
+      "location": "Wall Street, Manhattan, New York City, NY",
       "facilities": ["Conference Rooms", "High-speed Internet", "Parking Garage"]
     },
     {
@@ -20,7 +20,7 @@
       "price": "$8,000 per month",
       "status": "Rent",
       "area": "2000 sq ft",
-      "location": "Shopping Mall",
+      "location": "The Grove, Los Angeles, CA",
       "facilities": ["Large Display Windows", "High Foot Traffic Area", "Security System"]
     },
     {
@@ -32,7 +32,7 @@
       "price": "$12,000 per month",
       "status": "Rent",
       "area": "10000 sq ft",
-      "location": "Industrial Park",
+      "location": "South Side Industrial Park, Chicago, IL",
       "facilities": ["Loading Docks", "High Ceilings", "Ample Storage Space"]
     },
     {
@@ -44,7 +44,7 @@
       "price": "$15,000 per month",
       "status": "Rent",
       "area": "8000 sq ft",
-      "location": "Industrial Zone",
+      "location": "Corktown, Detroit, MI",
       "facilities": ["Manufacturing Equipment", "Production Areas", "Warehouse Space"]
     },
     {
@@ -56,7 +56,7 @@
       "price": "$20,000 per month",
       "status": "Rent",
       "area": "3000 sq ft",
-      "location": "Trendy Neighborhood",
+      "location": "Pearl District, Portland, OR",
       "facilities": ["Fully Equipped Kitchen", "Dining Area", "Stylish Interior"]
     },
     {
@@ -68,7 +68,7 @@
       "price": "$25,000 per night",
       "status": "Rent",
       "area": "5000 sq ft",
-      "location": "Downtown Entertainment District",
+      "location": "Wynwood Arts District, Miami, FL",
       "facilities": ["Stage", "Lighting System", "Seating Area"]
     },
     {
@@ -80,7 +80,7 @@
         "price": "$50,000 per month",
         "status": "Rent",
         "area": "10000 sq ft",
-        "location": "Central Business District",
+        "location": "Financial District, San Francisco, CA",
         "facilities": ["Executive Offices", "Conference Rooms", "Sky Lounge"]
     },
     {
@@ -92,7 +92,7 @@
         "price": "$500 per hour",
         "status": "Rent",
         "area": "2000 sq ft",
-        "location": "Central Location",
+        "location": "Downtown, Austin, TX",
         "facilities": ["Flexible Layout", "Central Location", "Adaptable Space"]
     }
 ]

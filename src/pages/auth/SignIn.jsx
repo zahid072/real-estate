@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../provider/AuthProvider";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const SignIn = () => {
   const [error, setError] = useState("");
@@ -26,7 +27,7 @@ const SignIn = () => {
     setError("");
     signInUsers(email, password)
       .then((res) => {
-        toast.success("Sign in successful")
+        toast.success("Sign in successful");
         e.target.email.value = "";
         e.target.password.value = "";
       })
@@ -40,17 +41,22 @@ const SignIn = () => {
     signInWithGoogle()
       .then((res) => {
         const user = res.user;
-        toast.success("Sign in successful")
-
+        toast.success("Sign in successful");
       })
       .catch((err) => {
         console.log("google", err.message);
       });
   };
+  const handleGitHubSignIn = () => {};
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Sign In</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content w-full md:w-96">
+        <div className="hero-content w-full md:w-[600px]">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSignIn} className="card-body">
               <h1 className="text-3xl font-bold text-center">Sign In</h1>
@@ -110,13 +116,19 @@ const SignIn = () => {
                 onClick={handleGoogleSignIn}
                 className="btn flex items-center gap-2"
               >
-                <FcGoogle /> Google
+                <FcGoogle className="text-xl" /> Google
+              </button>
+              <button
+                onClick={handleGitHubSignIn}
+                className="btn flex items-center gap-2"
+              >
+                <FaGithub className="text-xl" /> GitHub
               </button>
             </form>
           </div>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </>
   );
 };

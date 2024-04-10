@@ -4,6 +4,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const SignUp = () => {
   const [error, setError] = useState("");
@@ -46,8 +47,13 @@ const SignUp = () => {
   };
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Sign Up</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content w-full md:w-96">
+        <div className="hero-content w-full md:w-[600px]">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSignUp} className="card-body">
               <h1 className="text-3xl font-bold text-center">Sign Up</h1>
