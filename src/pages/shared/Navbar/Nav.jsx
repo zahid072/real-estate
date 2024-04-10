@@ -3,12 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const Nav = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
+  console.log(user?.displayName);
 
-  const handleSignOut = ()=>{
-    
-  }
+  const handleSignOut = () => {
+    logOut();
+  };
   const navLink = (
     <>
       <li>
@@ -50,10 +51,15 @@ const Nav = () => {
               {navLink}
 
               {user ? (
-                <button onClick={handleSignOut} className="btn md:hidden mt-2 block">Sign Out</button>
+                <button
+                  onClick={handleSignOut}
+                  className="btn md:hidden mt-2 block"
+                >
+                  Sign Out
+                </button>
               ) : (
                 <Link to={"/signIn"}>
-                  <button  className="btn mt-2 md:hidden block">Sign In</button>
+                  <button className="btn mt-2 md:hidden block">Sign In</button>
                 </Link>
               )}
             </ul>
@@ -66,9 +72,26 @@ const Nav = () => {
           <ul className="menu menu-horizontal px-1">{navLink}</ul>
         </div>
         <div className="navbar-end">
-          <img className="h-8 rounded-full mr-2" src="" alt="" />
+          {user && (
+            <div
+              className=" tooltip tooltip-bottom"
+              data-tip={user?.displayName}
+            >
+              <img
+                className="h-9 rounded-full mr-3"
+                src={
+                  (user?.photoURL && user?.photoURL) ||
+                  "https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
+                }
+                alt=""
+              />
+            </div>
+          )}
+
           {user ? (
-            <button onClick={handleSignOut} className="btn hidden md:block">Sign Out</button>
+            <button onClick={handleSignOut} className="btn hidden md:block">
+              Sign Out
+            </button>
           ) : (
             <Link to={"/signIn"}>
               <button className="btn hidden md:block">Sign In</button>

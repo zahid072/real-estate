@@ -1,17 +1,37 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const SignUp = () => {
+    const [error, setError] = useState("");
+   const {signUpUsers, updateUserProfile} = useContext(AuthContext);
+
     const handleSignUp = (e)=>{
         e.preventDefault();
-   
          const name = e.target.name.value;
          const photo = e.target.photo.value;
          const email = e.target.email.value;
          const password = e.target.password.value;
-   
+
+         if(password.length <6){
+           setError("Password at least 6 characters");
+           return
+         }
+         setError("")
+        signUpUsers(email, password)
+        .then((result) => {
+            const user = result.user;
+            updateUserProfile(name, photo)
+            console.log(user)
+            e.target.name.value = "";
+            e.target.photo.value = "";
+            e.target.email.value = "";
+            e.target.password.value = "";
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+          });
        
-   
      }
      return (
        <>
@@ -72,6 +92,9 @@ const SignUp = () => {
                      Forgot password?
                    </a>
                  </label>
+                 <p className='text-red-500'>
+                    {error}
+                 </p>
                </div>
                <div className="form-control mt-6">
                  <button className="btn btn-primary">Sign Up</button>

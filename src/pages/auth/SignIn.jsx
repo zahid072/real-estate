@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const SignIn = () => {
+  const {signInUsers, signInWithGoogle} = useContext(AuthContext);
 
   const handleSignIn = (e) => {
+   
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    signInUsers()
+    .then(res =>{
+      e.target.email.value = "";
+      e.target.password.value = "";
+    })
+    .catch(err =>{
+
+    })
   };
   const handleGoogleSignIn = () => {
-   
+   signInWithGoogle()
+   .then(res =>{
+    const user = res.user;
+    
+   })
+   .catch(err => {
+      console.log("google", err.message)
+   })
   };
   return (
     <>

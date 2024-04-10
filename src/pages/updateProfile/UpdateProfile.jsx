@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../provider/AuthProvider';
 
 const UpdateProfile = () => {
 
+  const {updateUserProfile} = useContext(AuthContext);
+    
     const handleUpdateProfile = (e)=>{
         e.preventDefault();
          const name = e.target.name.value;
          const photo = e.target.photo.value;
-   
+
+         updateUserProfile(name, photo)
+         .then( () => {
+            
+         })
+         .catch(err =>{
+          console.log(err.message)
+         })
+          
      }
   return (
     <>
