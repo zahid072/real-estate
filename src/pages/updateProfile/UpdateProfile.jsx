@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../provider/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateProfile = () => {
 
@@ -12,9 +14,10 @@ const UpdateProfile = () => {
 
          updateUserProfile(name, photo)
          .then( () => {
-            
+            toast.success("Successfully updated")
          })
          .catch(err =>{
+          toast.error(err.message)
           console.log(err.message)
          })
           
@@ -55,6 +58,7 @@ const UpdateProfile = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   )
 }
