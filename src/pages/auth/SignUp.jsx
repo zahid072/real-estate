@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const [error, setError] = useState("");
@@ -20,15 +22,15 @@ const SignUp = () => {
     const password = e.target.password.value;
 
     if (password.length < 6) {
-      setError("Password at least 6 characters");
+      setError("Password should be at least 6 characters");
       return;
     }
     setError("");
     signUpUsers(email, password)
       .then((result) => {
         const user = result.user;
+        toast.success("User successfully created");
         updateUserProfile(name, photo);
-        console.log(user);
         e.target.name.value = "";
         e.target.photo.value = "";
         e.target.email.value = "";
@@ -36,6 +38,10 @@ const SignUp = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
+
+        if (errorMessage === "Firebase: Error (auth/email-already-in-use).") {
+          setError("Email already in use");
+        }
       });
   };
   return (
@@ -125,6 +131,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

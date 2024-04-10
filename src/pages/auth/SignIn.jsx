@@ -3,48 +3,49 @@ import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignIn = () => {
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
-  const {signInUsers, signInWithGoogle} = useContext(AuthContext);
+  const { signInUsers, signInWithGoogle } = useContext(AuthContext);
 
-
-  const handleShowPass = ()=>{
+  const handleShowPass = () => {
     setShowPass(!showPass);
-  }
-
+  };
   const handleSignIn = (e) => {
-   
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    if (password.length < 6) {
+      setError("Password should be at least 6 characters");
+      return;
+    }
 
-      if(password.length < 6){
-        setError("Password at least 6 characters");
-        return
-      }
-
-      setError("")
-
+    setError("");
     signInUsers(email, password)
-    .then(res =>{
-      e.target.email.value = "";
-      e.target.password.value = "";
-    })
-    .catch(err =>{
-          setError(err.message)
-    })
+      .then((res) => {
+        toast.success("Sign in successful")
+        e.target.email.value = "";
+        e.target.password.value = "";
+      })
+      .catch((err) => {
+        if (err.message === "Firebase: Error (auth/invalid-credential).") {
+          setError("email or password invalid");
+        }
+      });
   };
   const handleGoogleSignIn = () => {
-   signInWithGoogle()
-   .then(res =>{
-    const user = res.user;
-    
-   })
-   .catch(err => {
-      console.log("google", err.message)
-   })
+    signInWithGoogle()
+      .then((res) => {
+        const user = res.user;
+        toast.success("Sign in successful")
+
+      })
+      .catch((err) => {
+        console.log("google", err.message);
+      });
   };
   return (
     <>
@@ -84,7 +85,7 @@ const SignIn = () => {
                       </span>
                     ) : (
                       <span>
-                        <FaEyeSlash/>
+                        <FaEyeSlash />
                       </span>
                     )}
                   </div>
@@ -94,9 +95,7 @@ const SignIn = () => {
                     Forgot password?
                   </a>
                 </label>
-                <p className="text-red-500">
-                  {error}
-                </p>
+                <p className="text-red-500">{error}</p>
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Sign In</button>
@@ -117,6 +116,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 };
