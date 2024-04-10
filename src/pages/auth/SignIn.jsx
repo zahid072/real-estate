@@ -10,11 +10,12 @@ import { Helmet } from "react-helmet";
 const SignIn = () => {
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
-  const { signInUsers, signInWithGoogle } = useContext(AuthContext);
+  const { signInUsers, signInWithGoogle, signInWithGitHub } = useContext(AuthContext);
 
   const handleShowPass = () => {
     setShowPass(!showPass);
   };
+  // handle all signIn methods
   const handleSignIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -25,6 +26,7 @@ const SignIn = () => {
     }
 
     setError("");
+    // email and password sign in
     signInUsers(email, password)
       .then((res) => {
         toast.success("Sign in successful");
@@ -37,6 +39,7 @@ const SignIn = () => {
         }
       });
   };
+  // google signIn
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((res) => {
@@ -47,7 +50,17 @@ const SignIn = () => {
         console.log("google", err.message);
       });
   };
-  const handleGitHubSignIn = () => {};
+  // gitHub sighIn
+  const handleGitHubSignIn = () => {
+   signInWithGitHub()
+   .then((res) => {
+    const user = res.user;
+    toast.success("Sign in successful");
+  })
+  .catch((err) => {
+    console.log("gitHub", err.message);
+  });
+  };
   return (
     <>
       <Helmet>
@@ -58,7 +71,8 @@ const SignIn = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content w-full md:w-[600px]">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleSignIn} className="card-body">
+           <div className="card-body">
+           <form onSubmit={handleSignIn} className="space-y-3">
               <h1 className="text-3xl font-bold text-center">Sign In</h1>
               <div className="form-control">
                 <label className="label">
@@ -112,7 +126,8 @@ const SignIn = () => {
                   Sign Up
                 </Link>
               </p>
-              <button
+            </form>
+            <button
                 onClick={handleGoogleSignIn}
                 className="btn flex items-center gap-2"
               >
@@ -124,7 +139,7 @@ const SignIn = () => {
               >
                 <FaGithub className="text-xl" /> GitHub
               </button>
-            </form>
+           </div>
           </div>
         </div>
       </div>
