@@ -14,16 +14,21 @@ const Nav = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/updateProfile"}>Update Profile</NavLink>
-      </li>
-      <li>
         <NavLink to={"/about"}>About</NavLink>
       </li>
+      <li>
+        <NavLink to={"/updateProfile"}>Update Profile</NavLink>
+      </li>
+      {user && (
+        <li>
+          <NavLink to={"/userProfile"}>User Profile</NavLink>
+        </li>
+      )}
     </>
   );
   return (
     <>
-      <div className="navbar px-0 bg-base-100 mt-4">
+      <div className="navbar px-0 bg-base-100 mt-1">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="lg:hidden">

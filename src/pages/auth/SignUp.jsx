@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
@@ -10,6 +10,9 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
   const { signUpUsers, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
 
   const handleShowPass = () => {
     setShowPass(!showPass);
@@ -32,10 +35,9 @@ const SignUp = () => {
         const user = result.user;
         toast.success("User successfully created");
         updateUserProfile(name, photo);
-        e.target.name.value = "";
-        e.target.photo.value = "";
-        e.target.email.value = "";
-        e.target.password.value = "";
+        e.target.reset();
+       
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -49,7 +51,7 @@ const SignUp = () => {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Sign Up</title>
+        <title>Sign Up || Universal Estate</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
@@ -125,7 +127,7 @@ const SignUp = () => {
                 <p className="text-red-500">{error}</p>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Sign Up</button>
+                <button className="btn btn-primary text-xl text-white">Sign Up</button>
               </div>
               <p>
                 Already have an account?{" "}

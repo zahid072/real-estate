@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
@@ -11,6 +11,8 @@ const SignIn = () => {
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
   const { signInUsers, signInWithGoogle, signInWithGitHub } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleShowPass = () => {
     setShowPass(!showPass);
@@ -20,6 +22,8 @@ const SignIn = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+
+    // password validations
     if (password.length < 6) {
       setError("Password should be at least 6 characters");
       return;
@@ -30,8 +34,9 @@ const SignIn = () => {
     signInUsers(email, password)
       .then((res) => {
         toast.success("Sign in successful");
-        e.target.email.value = "";
-        e.target.password.value = "";
+        e.target.reset();
+        navigate(location?.state ? location.state : "/");
+       
       })
       .catch((err) => {
         if (err.message === "Firebase: Error (auth/invalid-credential).") {
@@ -45,6 +50,7 @@ const SignIn = () => {
       .then((res) => {
         const user = res.user;
         toast.success("Sign in successful");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
         console.log("google", err.message);
@@ -56,6 +62,7 @@ const SignIn = () => {
    .then((res) => {
     const user = res.user;
     toast.success("Sign in successful");
+    navigate(location?.state ? location.state : "/");
   })
   .catch((err) => {
     console.log("gitHub", err.message);
@@ -65,7 +72,7 @@ const SignIn = () => {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Sign In</title>
+        <title>Sign In || Universal Estate</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
@@ -118,7 +125,7 @@ const SignIn = () => {
                 <p className="text-red-500">{error}</p>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Sign In</button>
+                <button className="btn btn-primary text-xl text-white">Sign In</button>
               </div>
               <p>
                 Don't have an account?{" "}
@@ -127,17 +134,22 @@ const SignIn = () => {
                 </Link>
               </p>
             </form>
+            <div className="w-full flex items-center gap-1">
+              <span className="h-[1.5px] w-full bg-[#43414198]"></span>
+              <p className="text-nowrap font-bold text-[#43414198]">Or</p>
+              <span className="h-[1.5px] w-full bg-[#43414198]"></span>
+            </div>
             <button
                 onClick={handleGoogleSignIn}
-                className="btn flex items-center gap-2"
+                className="btn flex items-center gap-2 border border-[#3e3d3d4f]"
               >
-                <FcGoogle className="text-xl" /> Google
+                <FcGoogle className="text-xl" />Continue With Google
               </button>
               <button
                 onClick={handleGitHubSignIn}
-                className="btn flex items-center gap-2"
+                className="btn flex items-center gap-2 border border-[#3e3d3d4f]"
               >
-                <FaGithub className="text-xl" /> GitHub
+                <FaGithub className="text-xl" />Continue With GitHub
               </button>
            </div>
           </div>

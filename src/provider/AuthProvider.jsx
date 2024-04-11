@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
       return updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: photo,
-      });
+      })
     }else if(name){
       return updateProfile(auth.currentUser, {
         displayName: name,
@@ -65,6 +65,7 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
+    setUser,
     loader,
     signUpUsers,
     signInUsers,

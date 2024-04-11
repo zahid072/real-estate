@@ -4,19 +4,20 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {Helmet} from "react-helmet";
+import auth from "../../firebase/Firebase.config";
 
 const UpdateProfile = () => {
   const Navigate = useNavigate();
   const [error, setError] = useState("");
 
-  const { updateUserProfile, user } = useContext(AuthContext);
+  const { updateUserProfile, user, setUser } = useContext(AuthContext);
 
   const handleUpdateProfile = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const photo = e.target.photo.value;
     if (!user) {
-      Navigate("/signIn");
+      Navigate("/signIn");   
       return;
     }
     if (!name && !photo) {
@@ -25,18 +26,22 @@ const UpdateProfile = () => {
     }
     setError("");
     updateUserProfile(name, photo)
-      .then(() => {
-        toast.success("Successfully updated");
-      })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+    .then(() => {
+      const updatedUser = auth.currentUser;
+      console.log(updatedUser)
+     setUser(updatedUser);
+     e.target.reset()
+       toast.success("Successfully updated");
+     })
+     .catch((err) => {
+       toast.error(err.message);
+     });
   };
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Update Profile</title>
+        <title>Update Profile || Universal Estate</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
