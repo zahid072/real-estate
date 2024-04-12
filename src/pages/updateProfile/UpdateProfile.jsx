@@ -32,7 +32,7 @@ const UpdateProfile = () => {
   setError("")
     updateUserProfile(name, photo)
     .then(() => {
-       toast.success("Successfully updated. Please refresh the page to see the changes.");
+       toast.success("Successfully updated.");
      })
      .catch((err) => {
        toast.error(err.message);

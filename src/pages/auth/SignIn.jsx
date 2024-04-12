@@ -31,16 +31,20 @@ const SignIn = () => {
     const email = data.email;
     const password = data.password;
     setError("");
+ 
     // email and password sign in
     signInUsers(email, password)
       .then(() => {
         toast.success("Sign in successful");
         reset();
+       setInterval(() => {
         navigate(location?.state ? location.state : "/");
+       }, 1000);
+        
       })
       .catch((err) => {
         if (err.message === "Firebase: Error (auth/invalid-credential).") {
-          setError("email or password invalid");
+          setError("Email or password invalid");
         }
       });
   };

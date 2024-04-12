@@ -14,6 +14,7 @@ import {
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
+  const [toasts, setToasts] = useState(false);
   const [user, setUser] = useState(null);
   const googleProvider = new GoogleAuthProvider();
   const gitHubProvider = new GithubAuthProvider();
@@ -23,7 +24,8 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const signInUsers = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password).then(()=>{setToasts(true)})
+
   };
   const signInWithGoogle = () => {
     return signInWithPopup(auth, googleProvider);
@@ -68,7 +70,8 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
-    setUser,
+    toasts,
+    setToasts,
     loader,
     signUpUsers,
     signInUsers,
