@@ -18,13 +18,13 @@ const UserProfile = () => {
             <div className="card-body space-y-3">
               <img
                 src={user?.photoURL}
-                className="mx-auto rounded-full h-36"
+                className="mx-auto rounded-full size-36"
                 alt=""
               />
               <h1 className="font-bold md:text-2xl text-xl text-center">Name: {user?.displayName}</h1>
               <p className="font-semibold text-center">Email: {user?.email}</p>
 
-              <Link className="btn btn-link" to={"/updateProfile"}>Update Profile?</Link>
+              <Link className="btn hover:bg-emerald-600 hover:text-white bg-emerald-400" to={"/updateProfile"}>Update Profile?</Link>
             </div>
           </div>
         </div>

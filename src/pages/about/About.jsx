@@ -9,7 +9,7 @@ const About = () => {
         <title>About || Universal Estate</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <h1>About coming soon...</h1>
+      <h1 className="text-center font-bold md:text-4xl text-2xl">About</h1>
     </div>
   );
 };

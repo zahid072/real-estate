@@ -20,11 +20,9 @@ const AuthProvider = ({ children }) => {
   const [loader, setLoader] = useState(true);
 
   const signUpUsers = (email, password) => {
-    setLoader(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const signInUsers = (email, password) => {
-    setLoader(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const signInWithGoogle = () => {
@@ -38,19 +36,24 @@ const AuthProvider = ({ children }) => {
       return updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: photo,
+      }).then(()=>{
+        setUser({displayName : name, photoURL : photo})
       })
     }else if(name){
       return updateProfile(auth.currentUser, {
         displayName: name,
-      });
+      }).then(()=>{
+        setUser({displayName : name, photoURL : photo})
+      })
     }else{
       return updateProfile(auth.currentUser, {
         photoURL: photo,
-      });
+      }).then(()=>{
+        setUser({displayName : name, photoURL : photo})
+      })
     }
   };
   const logOut = () => {
-    setLoader(true);
     return signOut(auth);
   };
   useEffect(() => {

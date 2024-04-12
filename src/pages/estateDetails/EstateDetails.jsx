@@ -9,7 +9,7 @@ const EstateDetails = () => {
         <title>Estate Details || Universal Estate</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      Details
+          
     </div>
   )
 }

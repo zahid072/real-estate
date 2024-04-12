@@ -56,13 +56,13 @@ const Nav = () => {
               {user ? (
                 <button
                   onClick={handleSignOut}
-                  className="btn md:hidden mt-2 block"
+                  className="btn md:hidden mt-2 block bg-emerald-400 hover:bg-emerald-600 hover:text-white"
                 >
                   Sign Out
                 </button>
               ) : (
                 <Link to={"/signIn"}>
-                  <button className="btn mt-2 md:hidden block">Sign In</button>
+                  <button className="btn mt-2 bg-emerald-400 hover:bg-emerald-600 hover:text-white md:hidden block">Sign In</button>
                 </Link>
               )}
             </ul>
@@ -84,7 +84,7 @@ const Nav = () => {
               data-tip={user?.displayName}
             >
               <img
-                className="h-9 rounded-full mr-3"
+                className="size-12 rounded-full mr-3"
                 src={
                   (user?.photoURL && user?.photoURL) ||
                   "https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
@@ -95,12 +95,12 @@ const Nav = () => {
           )}
 
           {user ? (
-            <button onClick={handleSignOut} className="btn hidden md:block">
+            <button onClick={handleSignOut} className="btn hidden md:block bg-emerald-400 hover:bg-emerald-600 hover:text-white">
               Sign Out
             </button>
           ) : (
             <Link to={"/signIn"}>
-              <button className="btn hidden md:block">Sign In</button>
+              <button className="btn hidden bg-emerald-400 hover:bg-emerald-600 hover:text-white md:block">Sign In</button>
             </Link>
           )}
         </div>

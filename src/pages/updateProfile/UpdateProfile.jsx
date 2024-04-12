@@ -1,37 +1,38 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useForm } from "react-hook-form";
 import {Helmet} from "react-helmet";
-import auth from "../../firebase/Firebase.config";
+
 
 const UpdateProfile = () => {
-  const Navigate = useNavigate();
   const [error, setError] = useState("");
+  const { updateUserProfile, user} = useContext(AuthContext);
 
-  const { updateUserProfile, user, setUser } = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      fullName: user?.displayName,
+      photoURL: user?.photoURL,
+    },
+  });
 
-  const handleUpdateProfile = (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const photo = e.target.photo.value;
-    if (!user) {
-      Navigate("/signIn");   
-      return;
-    }
+  const handleUpdateProfile = (data) => {
+    const name = data.fullName;
+    const photo = data.photoURL;
+
     if (!name && !photo) {
-      setError(`Please provide "name" or "photo url"`);
+      setError(`Please provide either "name" or "photo url".`);
       return;
     }
-    setError("");
+  setError("")
     updateUserProfile(name, photo)
     .then(() => {
-      const updatedUser = auth.currentUser;
-      console.log(updatedUser)
-     setUser(updatedUser);
-     e.target.reset()
-       toast.success("Successfully updated");
+       toast.success("Successfully updated. Please refresh the page to see the changes.");
      })
      .catch((err) => {
        toast.error(err.message);
@@ -47,9 +48,9 @@ const UpdateProfile = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content w-full md:w-96">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleUpdateProfile} className="card-body">
+            <form onSubmit={handleSubmit(handleUpdateProfile)} className="card-body">
               <h1 className="text-3xl font-bold text-center">
-                Update your name and image
+                Update Your Profile
               </h1>
               <div className="form-control">
                 <label className="label">
@@ -58,7 +59,7 @@ const UpdateProfile = () => {
                 <input
                   type="text"
                   placeholder="Name"
-                  name="name"
+                  {...register("fullName")}
                   className="input input-bordered"
                 />
               </div>
@@ -69,12 +70,12 @@ const UpdateProfile = () => {
                 <input
                   type="text"
                   placeholder="Photo URL"
-                  name="photo"
+                  {...register("photoURL")}
                   className="input input-bordered"
                 />
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">save</button>
+                <button className="btn btn-primary text-xl">Save</button>
               </div>
               <p className="text-red-500">{error}</p>
             </form>
