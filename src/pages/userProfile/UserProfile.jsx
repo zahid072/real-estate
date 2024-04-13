@@ -7,11 +7,7 @@ const UserProfile = () => {
   const { user } = useContext(AuthContext);
   return (
     <div>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>User Profile || Universal Estate</title>
-        <link rel="canonical" href="http://mysite.com/example" />
-      </Helmet>
+     
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content w-full md:w-96">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

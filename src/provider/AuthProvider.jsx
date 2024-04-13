@@ -33,13 +33,13 @@ const AuthProvider = ({ children }) => {
   const signInWithGitHub = () => {
     return signInWithPopup(auth, gitHubProvider);
   };
-  const updateUserProfile = (name, photo) => {
+  const updateUserProfile = (name, photo, Email) => {
     if(name && photo ){
       return updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: photo,
       }).then(()=>{
-        setUser({displayName : name, photoURL : photo})
+        setUser({displayName : name, photoURL : photo, email:Email})
       })
     }else if(name){
       return updateProfile(auth.currentUser, {

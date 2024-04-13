@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
+import 'animate.css';
 
 const SignIn = () => {
   const [error, setError] = useState("");
@@ -163,14 +164,14 @@ const SignIn = () => {
                 onClick={handleGoogleSignIn}
                 className="btn flex items-center gap-2 border border-[#3e3d3d4f]"
               >
-                <FcGoogle className="text-xl" />
+                <FcGoogle className="text-xl animate__animated animate__zoomInDown" />
                 Continue With Google
               </button>
               <button
                 onClick={handleGitHubSignIn}
                 className="btn flex items-center gap-2 border border-[#3e3d3d4f]"
               >
-                <FaGithub className="text-xl" />
+                <FaGithub className="text-xl animate__animated animate__backInLeft" />
                 Continue With GitHub
               </button>
             </div>
