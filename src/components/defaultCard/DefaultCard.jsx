@@ -6,7 +6,7 @@ const DefaultCard = ({ estate }) => {
   const { image, id, segment_name, status, price, estate_title } = estate;
   return (
     <>
-      <div className="card md:w-full p-5 border border-[#3f3e3e2f] bg-base-100 animate__animated animate__fadeInUp">
+      <div className="card w-full p-5 border border-[#3f3e3e2f] bg-base-100 animate__animated animate__fadeInUp">
         <figure>
           <img
             src={image}

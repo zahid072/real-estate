@@ -164,14 +164,14 @@ const SignIn = () => {
                 onClick={handleGoogleSignIn}
                 className="btn flex items-center gap-2 border border-[#3e3d3d4f]"
               >
-                <FcGoogle className="text-xl animate__animated animate__zoomInDown" />
+                <FcGoogle className="text-2xl animate__animated animate__zoomInDown" />
                 Continue With Google
               </button>
               <button
                 onClick={handleGitHubSignIn}
                 className="btn flex items-center gap-2 border border-[#3e3d3d4f]"
               >
-                <FaGithub className="text-xl animate__animated animate__backInLeft" />
+                <FaGithub className="text-2xl animate__animated animate__backInLeft" />
                 Continue With GitHub
               </button>
             </div>

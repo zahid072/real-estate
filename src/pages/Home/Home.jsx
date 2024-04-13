@@ -28,7 +28,7 @@ const Home = () => {
           city centers to serene suburban landscapes, discover the ideal setting
           for your business endeavors.
         </p>
-        <div className="grid lg:grid-cols-3 px-24 mt-5 md:grid-cols-2 grid-cols-1 justify-items-center gap-5">
+        <div className="grid lg:grid-cols-3 md:px-24 mt-5 md:grid-cols-2 grid-cols-1 justify-items-center gap-5">
           {sliceData.map((estate) => (
             <DefaultCard key={estate.id} estate={estate} />
           ))}
