@@ -5,6 +5,7 @@ import { AuthContext } from "../../../provider/AuthProvider";
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
 
+
   const handleSignOut = () => {
     logOut();
   };
@@ -29,7 +30,7 @@ const Nav = () => {
             <div tabIndex={0} role="button" className="lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="md:size-9 size-6  mr-2"
+                className="size-11  mr-2"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -65,7 +66,7 @@ const Nav = () => {
 
           <img
             src="https://i.ibb.co/Zxb9JWv/logo2.png"
-            className="lg:h-20 md:h-12 h-10"
+            className="lg:h-20 h-12"
             alt=""
           />
         </div>

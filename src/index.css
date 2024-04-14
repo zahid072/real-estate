@@ -10,3 +10,11 @@
 .font-roboto{
     font-family: "Roboto", sans-serif;
 }
+.swiperBtn{
+    top: unset !important;
+    bottom: unset !important;
+    left: unset !important;
+    right: unset !important;
+    width: auto !important;
+    position: unset !important;
+}

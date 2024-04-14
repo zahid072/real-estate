@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import useFetchData from "../../Hooks/useFetchData";
 import { Helmet } from "react-helmet";
 import Banner from "../../components/banner/Banner";
 import DefaultCard from "../../components/defaultCard/DefaultCard";
+
+
 
 const Home = () => {
   const [showData, setShowData] = useState(false);
@@ -12,10 +14,10 @@ const Home = () => {
     setShowData(true);
   };
   return (
-    <div>
+    <div >
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Universal Estate</title>
+        <title>Universal Estate || Home</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <Banner />

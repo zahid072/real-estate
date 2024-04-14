@@ -38,10 +38,7 @@ const SignIn = () => {
       .then(() => {
         toast.success("Sign in successful");
         reset();
-       setInterval(() => {
         navigate(location?.state ? location.state : "/");
-       }, 1000);
-        
       })
       .catch((err) => {
         if (err.message === "Firebase: Error (auth/invalid-credential).") {

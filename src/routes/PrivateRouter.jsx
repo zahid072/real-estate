@@ -5,11 +5,11 @@ import {Navigate, useLocation} from 'react-router-dom'
 const PrivateRouter = ({children}) => {
   const {user, loader} = useContext(AuthContext);
   const location = useLocation();
-  if(user){
-    return children;
-  }
   if(loader){
     return <img src="https://i.ibb.co/Mg6Rvtx/loader.gif" className='mx-auto' alt="" />
+  }
+  if(user){
+    return children;
   }
 
   return <Navigate state={location.pathname} to={"/signIn"}></Navigate>
