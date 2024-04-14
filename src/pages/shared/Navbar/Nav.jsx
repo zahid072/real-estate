@@ -5,7 +5,6 @@ import { AuthContext } from "../../../provider/AuthProvider";
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
 
-
   const handleSignOut = () => {
     logOut();
   };
@@ -15,16 +14,21 @@ const Nav = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/about"}>About</NavLink>
-      </li>
-      <li>
         <NavLink to={"/updateProfile"}>Update Profile</NavLink>
+      </li>
+      {user && (
+        <li>
+          <NavLink to={"/favorite"}>Favorite</NavLink>
+        </li>
+      )}
+      <li>
+        <NavLink to={"/about"}>About</NavLink>
       </li>
     </>
   );
   return (
     <>
-      <div className="navbar px-0 bg-base-100 mt-1">
+      <div className="navbar px-0 max-w-[1490px] mx-auto bg-base-100 mt-1">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="lg:hidden">
@@ -58,7 +62,9 @@ const Nav = () => {
                 </button>
               ) : (
                 <Link to={"/signIn"}>
-                  <button className="btn mt-2 bg-emerald-400 hover:bg-emerald-600 hover:text-white md:hidden block">Sign In</button>
+                  <button className="btn mt-2 bg-emerald-400 hover:bg-emerald-600 hover:text-white md:hidden block">
+                    Sign In
+                  </button>
                 </Link>
               )}
             </ul>
@@ -80,7 +86,7 @@ const Nav = () => {
               data-tip={user?.displayName}
             >
               <img
-                className="size-12 rounded-full mr-3"
+                className="size-12 cursor-pointer rounded-full mr-3"
                 src={
                   (user?.photoURL && user?.photoURL) ||
                   "https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
@@ -91,12 +97,17 @@ const Nav = () => {
           )}
 
           {user ? (
-            <button onClick={handleSignOut} className="btn hidden md:block bg-emerald-400 hover:bg-emerald-600 hover:text-white">
+            <button
+              onClick={handleSignOut}
+              className="btn hidden md:block bg-emerald-400 hover:bg-emerald-600 hover:text-white"
+            >
               Sign Out
             </button>
           ) : (
             <Link to={"/signIn"}>
-              <button className="btn hidden bg-emerald-400 hover:bg-emerald-600 hover:text-white md:block">Sign In</button>
+              <button className="btn hidden bg-emerald-400 hover:bg-emerald-600 hover:text-white md:block">
+                Sign In
+              </button>
             </Link>
           )}
         </div>

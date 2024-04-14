@@ -1,10 +1,8 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import useFetchData from "../../Hooks/useFetchData";
 import { Helmet } from "react-helmet";
 import Banner from "../../components/banner/Banner";
 import DefaultCard from "../../components/defaultCard/DefaultCard";
-
-
 
 const Home = () => {
   const [showData, setShowData] = useState(false);
@@ -14,7 +12,7 @@ const Home = () => {
     setShowData(true);
   };
   return (
-    <div >
+    <div>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Universal Estate || Home</title>
@@ -36,12 +34,14 @@ const Home = () => {
           ))}
         </div>
         <div className="w-32 mx-auto mt-3">
-          <button
-            onClick={handleSeeAll}
-            className={`btn btn-accent ${showData ? "hidden" : "block"}`}
-          >
-            See more...
-          </button>
+          {sliceData.length >0 && (
+            <button
+              onClick={handleSeeAll}
+              className={`btn btn-accent ${showData ? "hidden" : "block"}`}
+            >
+              See more...
+            </button>
+          )}
         </div>
       </div>
     </div>

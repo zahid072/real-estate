@@ -9,6 +9,7 @@ import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 import PrivateRouter from "./PrivateRouter";
 import EstateDetails from "../pages/estateDetails/EstateDetails";
 import UserProfile from "../pages/userProfile/UserProfile";
+import Favorite from "../pages/Favorite/Favorite";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <UpdateProfile />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/favorite",
+        element: (
+          <PrivateRouter>
+            <Favorite/>
           </PrivateRouter>
         ),
       },

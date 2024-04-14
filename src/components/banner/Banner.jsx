@@ -35,7 +35,7 @@ const Banner = () => {
               style={{
                 backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url(${property.image})`,
               }}
-              className="w-full bg-no-repeat flex items-center justify-center bg-cover bg-center rounded-lg h-full"
+              className="w-full px-5 bg-no-repeat flex items-center justify-center bg-cover bg-center rounded-lg h-full"
             >
               <div className="max-w-3xl">
                 <h1 className="text-white lg:text-5xl md:text-3xl text-2xl font-bold animate__animated animate__fadeInUp hover:text-orange-500 transition cursor-pointer">
@@ -47,8 +47,8 @@ const Banner = () => {
                     {property.estate_title}
                   </Link>
                 </h1>
-                <div className="flex md:flex-row flex-col  md:gap-8 gap-6 items-center text-white text-xl font-semibold mt-4 animate__animated animate__fadeInUp ">
-                  <p className=" bg-[#26eab986] px-2 rounded">
+                <div className="md:flex md:gap-8 gap-6 items-center text-white text-xl font-semibold mt-4 animate__animated animate__fadeInUp ">
+                  <p className="md:mb-0 mb-5 w-[112px] text-center bg-[#26eab986] rounded">
                     For {property.status}
                   </p>
                   <p className="flex gap-2 md:text-2xl text-sm items-center">
@@ -57,7 +57,7 @@ const Banner = () => {
                   </p>
                 </div>
                 <div className="flex items-center gap-2 text-white mt-5 text-xl font-bold animate__animated animate__fadeInUp">
-                  <BiArea className="text-emerald-400 text-2xl " />{" "}
+                  <BiArea className="text-emerald-400 text-3xl " />{" "}
                   {property.area}
                 </div>
               </div>
@@ -67,8 +67,8 @@ const Banner = () => {
       </Swiper>
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2">
         <div className="flex md:w-40 w-28 justify-between">
-          <div className="swiper-button-prev swiperBtn font-bold text-orange-500 bg-[#ffffff7c] hover:bg-emerald-500 transition h-16 px-3 rounded"></div>
-          <div className="swiper-button-next swiperBtn font-bold text-orange-500 bg-[#ffffff7c] hover:bg-emerald-500 transition h-16 px-3 rounded"></div>
+          <div className="swiper-button-prev swiperBtn font-bold text-white bg-[#26eab986] hover:bg-emerald-500 transition h-16 px-3 rounded"></div>
+          <div className="swiper-button-next swiperBtn font-bold text-white bg-[#26eab986] hover:bg-emerald-500 transition h-16 px-3 rounded"></div>
         </div>
       </div>
     </div>
