@@ -71,7 +71,7 @@ const EstateDetails = () => {
       </Helmet>
 
       <div className="my-28 space-y-5 lg:w-5/6 mx-2 md:mx-auto">
-        <div className="md:flex max-[500px]:flex justify-between items-center">
+        <div className="md:flex  justify-between items-center">
           <div className="min-[500px]:flex md:gap-8 gap-6 items-center md:text-2xl font-semibold mt-4">
             <p className="text-center w-32 text-white bg-emerald-500 rounded">
               For {status}
