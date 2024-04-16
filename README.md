@@ -1,8 +1,15 @@
-# React + Vite
+Site : Universal Estates Network
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live : https://a8-universal-real-estates.netlify.app/
 
-Currently, two official plugins are available:
+Description:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Responsive design ensures optimal viewing on all devices: laptop, tablet, and mobile.
+
+2. Providing clients with personalized property recommendations tailored to their unique business needs.
+
+3. Ensuring a secure and seamless sign-in and sign-up process with robust encryption and authentication protocols.
+
+4. Empowering users to easily browse properties with comprehensive information and seamlessly connect with us for inquiries.
+
+5. Allowing users to effortlessly update their profiles and manage their favorite property lists by adding or removing properties based on their preferences.
