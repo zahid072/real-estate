@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "animate.css";
 import { BiArea } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import { getStoredId, removeId, saveId } from "../../Utilities/LocalStorage";
 
 const DefaultCard = ({ estate }) => {
+
   const [isFavorite, setIsFavorite] = useState(false);
+  const localId = getStoredId("favorite-property");
+
   const {
     image,
     id,
@@ -17,10 +21,25 @@ const DefaultCard = ({ estate }) => {
     area,
     location,
   } = estate;
-
+   
   const handleShowFavorite = () => {
-    setIsFavorite(!isFavorite);
+    if(!localId.includes(id)){
+      saveId(id, "favorite-property")
+      setIsFavorite(true)
+    }
+    if(localId.includes(id)){
+      removeId(id, "favorite-property")
+      setIsFavorite(false)
+    } 
   };
+
+  useEffect(() => {
+    for(let lId of localId){
+      if(lId === id){
+        setIsFavorite(true)
+      }
+    }
+   }, [localId]);
   return (
     <>
       <div className="card w-full p-5 border border-[#3f3e3e2f] bg-base-100 animate__animated animate__fadeInUp">

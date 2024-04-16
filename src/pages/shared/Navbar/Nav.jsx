@@ -16,11 +16,11 @@ const Nav = () => {
       <li>
         <NavLink to={"/updateProfile"}>Update Profile</NavLink>
       </li>
-      {user && (
-        <li>
-          <NavLink to={"/favorite"}>Favorite</NavLink>
-        </li>
-      )}
+
+      <li>
+        <NavLink to={"/favorite"}>Favorite</NavLink>
+      </li>
+
       <li>
         <NavLink to={"/about"}>About</NavLink>
       </li>

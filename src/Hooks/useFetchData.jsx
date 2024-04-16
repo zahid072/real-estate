@@ -5,7 +5,7 @@ const useFetchData = () => {
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
-      const res = await fetch('/data.json');
+      const res = await fetch('https://zahid072.github.io/real-state-data/data.json');
       const jsonData = await res.json();
       setData(jsonData);
     }

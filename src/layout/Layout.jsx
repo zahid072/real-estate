@@ -12,8 +12,7 @@ const Layout = () => {
         <Nav />
       </div>
       <div className="max-w-[1490px] lg:mx-auto mx-2">
-        <Outlet />
-        
+        <Outlet /> 
       </div>
       <div>
         <Footer />

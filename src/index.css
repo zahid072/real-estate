@@ -18,3 +18,8 @@
     width: auto !important;
     position: unset !important;
 }
+@media (min-width: 420px) {
+    .textNowrap {
+        text-wrap: nowrap;
+    }
+}
