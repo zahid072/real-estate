@@ -22,7 +22,7 @@ const Nav = () => {
       </li>
 
       <li>
-        <NavLink to={"/about"}>About</NavLink>
+        <NavLink to={"/contact"}>Contact</NavLink>
       </li>
     </>
   );

@@ -4,12 +4,13 @@ import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import SignIn from "../pages/auth/SignIn";
 import SignUp from "../pages/auth/SignUp";
-import About from "../pages/about/About";
+
 import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 import PrivateRouter from "./PrivateRouter";
 import EstateDetails from "../pages/estateDetails/EstateDetails";
-import UserProfile from "../pages/userProfile/UserProfile";
+
 import Favorite from "../pages/Favorite/Favorite";
+import Contact from "../pages/contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -22,8 +23,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/about",
-        element: <About />,
+        path: "/contact",
+        element:<Contact/> ,
       },
       {
         path: "/updateProfile",

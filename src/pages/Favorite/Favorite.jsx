@@ -10,6 +10,8 @@ const Favorite = () => {
   const [filteredData, setFilteredData] = useState([]);
   const { data } = useFetchData();
   const storedProperty = getStoredId("favorite-property");
+ 
+  // filter match data
   useEffect(() => {
     let allProperties = [];
     if (data.length > 0) {
@@ -24,6 +26,7 @@ const Favorite = () => {
       setFilteredData(allProperties);
     }
   }, [data]);
+
 
   return (
     <div className="pb-10">
@@ -47,9 +50,9 @@ const Favorite = () => {
                 {filteredData?.map((estate, index) => (
                   <div key={index} className="mb-6 mt-5">
                     <div className="md:flex w-full border-2 p-5 rounded-lg space-x-2 sm:space-x-4">
-                      <div className="md:w-60 md:h-56 bg-gray-500 rounded-lg flex items-center">
+                      <div className="md:w-96 md:h-56 bg-gray-500 rounded-lg flex items-center">
                         <img
-                          className="flex-shrink-0 object-cover  md:h-52 mx-auto border-transparent rounded outline-none "
+                          className=" object-cover  md:h-52 mx-auto border-transparent rounded outline-none "
                           src={estate?.image}
                           alt=""
                         />
