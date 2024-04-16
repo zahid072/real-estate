@@ -36,9 +36,9 @@ const SignUp = () => {
         toast.success("User successfully created");
         updateUserProfile(name, photo);
         reset();
-        setInterval(() => {
+        setTimeout(() => {
           navigate(location?.state ? location.state : "/");
-         }, 1000);
+        }, 1000);
       })
       .catch((error) => {
         const errorMessage = error.message;

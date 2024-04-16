@@ -49,7 +49,7 @@ const Favorite = () => {
               <div>
                 {filteredData?.map((estate, index) => (
                   <div key={index} className="mb-6 mt-5">
-                    <div className="md:flex w-full border-2 p-5 rounded-lg space-x-2 sm:space-x-4">
+                    <div className="md:flex w-full border-2 border-gray-400 p-5 rounded-lg space-x-2 sm:space-x-4">
                       <div className="md:w-96 md:h-56 bg-gray-500 rounded-lg flex items-center">
                         <img
                           className=" object-cover  md:h-52 mx-auto border-transparent rounded outline-none "

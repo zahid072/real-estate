@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { FaLocationDot } from "react-icons/fa6";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMailOutline } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
+  const {user} = useContext(AuthContext);
+  const navigate = useNavigate();
+   console.log(user)
+      const handleSendMessage = (e)=>{
+        e.preventDefault();
+        if(!user){
+          navigate("/signIn");
+          return
+        }
+          e.target.reset();
+          toast.success("You've successfully sent your message. We'll get back to you soon!")
+        
+      }
+    
   return (
     <div className="py-5">
       <Helmet>
@@ -44,7 +61,7 @@ const Contact = () => {
           or sell, our experienced team is here to guide you every step of the
           way. Reach out today to start your journey towards property success.
         </p>
-        <form className=" p-10 max-w-4xl mx-auto">
+        <form onSubmit={handleSendMessage} className=" p-10 max-w-4xl mx-auto">
           <div className="flex md:flex-row flex-col gap-5 *:w-full *:border *:border-gray-300">
             <input
               className="input"
@@ -62,7 +79,6 @@ const Contact = () => {
               className="input"
               placeholder="Phone"
               type="number"
-              required
             />
           </div>
           <textarea
@@ -77,6 +93,7 @@ const Contact = () => {
           </div>
         </form>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

@@ -99,12 +99,14 @@ const EstateDetails = () => {
         <div>
           <h1 className="md:text-3xl text-2xl text-gray-600 font-semibold">{estate_title}</h1>
         </div>
+        {/* description */}
         <div className="w-full bg-white">
           <h1 className="bg-[#2d2d2d] text-3xl font-bold text-white px-6 py-6 text-start">
             Description
           </h1>
           <p className="p-6 md:text-xl">{description}</p>
         </div>
+        {/* table section */}
         <div>
           <div className="flex w-full">
             <div className=" md:w-10 "></div>
@@ -236,6 +238,10 @@ const EstateDetails = () => {
               </ul>
             </div>
           )}
+        </div>
+        {/* map section */}
+        <div>
+
         </div>
       </div>
     </div>

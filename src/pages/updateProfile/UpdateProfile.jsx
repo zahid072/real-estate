@@ -20,7 +20,7 @@ const UpdateProfile = () => {
       email: user?.email,
     },
   });
-  console.log(user)
+
   const handleUpdateProfile = (data) => {
     const name = data.fullName;
     const photo = data.photoURL;

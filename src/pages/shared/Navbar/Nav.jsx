@@ -71,7 +71,7 @@ const Nav = () => {
           </div>
 
           <img
-            src="https://i.ibb.co/Zxb9JWv/logo2.png"
+            src="https://i.ibb.co/dcCKMfF/estate-logo.png"
             className="lg:h-20 h-12"
             alt=""
           />

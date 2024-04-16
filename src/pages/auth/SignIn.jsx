@@ -38,7 +38,9 @@ const SignIn = () => {
       .then(() => {
         toast.success("Sign in successful");
         reset();
-        navigate(location?.state ? location.state : "/");
+        setTimeout(() => {
+          navigate(location?.state ? location.state : "/");
+        }, 1000);
       })
       .catch((err) => {
         if (err.message === "Firebase: Error (auth/invalid-credential).") {
@@ -52,7 +54,9 @@ const SignIn = () => {
       .then((res) => {
         const user = res.user;
         toast.success("Sign in successful");
-        navigate(location?.state ? location.state : "/");
+        setTimeout(() => {
+          navigate(location?.state ? location.state : "/");
+        }, 1000);
       })
       .catch((err) => {
         console.log("google", err.message);
@@ -64,7 +68,9 @@ const SignIn = () => {
       .then((res) => {
         const user = res.user;
         toast.success("Sign in successful");
-        navigate(location?.state ? location.state : "/");
+        setTimeout(() => {
+          navigate(location?.state ? location.state : "/");
+        }, 1000);
       })
       .catch((err) => {
         console.log("gitHub", err.message);
