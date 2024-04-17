@@ -83,7 +83,7 @@ const Favorite = () => {
                         <div className="flex md:flex-row flex-col justify-start border-t-2 pt-4 md:items-center gap-8">
                           <div className=" w-1/2">
                             <Link to={`/estateDetails/${estate?.id}`}>
-                              <button className="px-4 py-3 rounded-lg bg-[#23BE0A] text-white font-semibold">
+                              <button className="px-4 py-3 rounded-lg bg-emerald-500 text-white font-semibold">
                                 View details
                               </button>
                             </Link>
