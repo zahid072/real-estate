@@ -5,6 +5,7 @@ import useFetchData from "../../Hooks/useFetchData";
 import { FaLocationDot, FaStar } from "react-icons/fa6";
 import { FaRegStar, FaShareAlt } from "react-icons/fa";
 import { getStoredId, removeId, saveId } from "../../Utilities/LocalStorage";
+import DirectionMap from "../../components/directionMap/DirectionMap";
 
 const EstateDetails = () => {
   const [isValue, setIsValue] = useState(true);
@@ -24,7 +25,7 @@ const EstateDetails = () => {
     area,
     location,
     facilities,
-    built_year
+    built_year,
   } = findData;
   // find clicked id
   useEffect(() => {
@@ -37,18 +38,18 @@ const EstateDetails = () => {
   }, [data, clickId]);
   // toggle favorite button
   const handleShowFavorite = () => {
-    if(!localId.includes(id)){
-      saveId(id, "favorite-property")
-      setIsFavorite(true)
+    if (!localId.includes(id)) {
+      saveId(id, "favorite-property");
+      setIsFavorite(true);
     }
-    if(localId.includes(id)){
-      removeId(id, "favorite-property")
-      setIsFavorite(false)
-    } 
+    if (localId.includes(id)) {
+      removeId(id, "favorite-property");
+      setIsFavorite(false);
+    }
   };
   useEffect(() => {
-    if(localId.includes(id)){
-      setIsFavorite(true)
+    if (localId.includes(id)) {
+      setIsFavorite(true);
     }
   }, [localId]);
 
@@ -60,8 +61,8 @@ const EstateDetails = () => {
   const handleFacilitiesNavigation = () => {
     setIsValue(false);
   };
- 
-  let sliceText = location?.slice(0, 15)
+
+  let sliceText = location?.slice(0, 15);
   return (
     <div>
       <Helmet>
@@ -97,11 +98,13 @@ const EstateDetails = () => {
           alt=""
         />
         <div>
-          <h1 className="md:text-3xl text-2xl text-gray-600 font-semibold">{estate_title}</h1>
+          <h1 className="md:text-3xl text-2xl text-gray-600 font-semibold">
+            {estate_title}
+          </h1>
         </div>
         {/* description */}
-        <div className="w-full bg-white">
-          <h1 className="bg-[#2d2d2d] text-3xl font-bold text-white px-6 py-6 text-start">
+        <div className="w-full bg-white rounded">
+          <h1 className="bg-[#2d2d2d] text-3xl font-bold text-white px-6 py-6 text-start rounded-t">
             Description
           </h1>
           <p className="p-6 md:text-xl">{description}</p>
@@ -133,115 +136,95 @@ const EstateDetails = () => {
           </div>
 
           {isValue && (
-            <div className="bg-[#2d2d2d] -mt-[0.5px] w-full py-10 px-5 text-white">
-              <table className="min-w-full divide-y divide-gray-200 flex md:flex-row flex-col" >
+            <div className="bg-[#2d2d2d] -mt-[0.5px] w-full py-10 px-5 text-white rounded">
+              <table className="min-w-full divide-y divide-gray-200 flex md:flex-row flex-col">
                 <tbody className="bg-white md:border-r border-black divide-y w-full divide-gray-200">
                   <tr>
                     <td className="px-6 py-4 bg-gray-200 font-bold md:text-xl">
-                      <div className=" text-gray-900">
-                      Property ID
-                      </div>
+                      <div className=" text-gray-900">Property ID</div>
                     </td>
                     <td className="px-6 text-gray-500 bg-gray-200 py-4 md:text-xl text-sm textNowrap ">
-                     {id}
+                      {id}
                     </td>
-                   
                   </tr>
                   <tr className="*:w-full">
                     <td className="px-6 py-4  font-bold md:text-xl">
-                      <div className=" text-gray-900">
-                      Price
-                      </div>
+                      <div className=" text-gray-900">Price</div>
                     </td>
                     <td className="px-6 text-gray-500  py-4 md:text-xl text-sm textNowrap ">
-                     {price}
+                      {price}
                     </td>
-                 
                   </tr>
                   <tr>
                     <td className="px-6 py-4 bg-gray-200 font-bold md:text-xl">
-                      <div className=" text-gray-900">
-                      Property Type
-                      </div>
+                      <div className=" text-gray-900">Property Type</div>
                     </td>
                     <td className="px-6 text-gray-500 bg-gray-200 py-4 md:text-xl text-sm textNowrap ">
-                     {segment_name}
+                      {segment_name}
                     </td>
-                   
                   </tr>
                   <tr className="*:w-full">
                     <td className="px-6 py-4  font-bold md:text-xl">
-                      <div className=" text-gray-900">
-                      Property status
-                      </div>
+                      <div className=" text-gray-900">Property status</div>
                     </td>
                     <td className="px-6 text-gray-500  py-4 md:text-xl text-sm textNowrap ">
-                     {status}
+                      {status}
                     </td>
-                 
                   </tr>
                 </tbody>
                 <tbody className="bg-white divide-y w-full divide-gray-200">
-                 
                   <tr className="*:w-full">
                     <td className="px-6 py-4  font-bold md:text-xl">
-                      <div className=" text-gray-900">
-                      Area
-                      </div>
+                      <div className=" text-gray-900">Area</div>
                     </td>
                     <td className="px-6 text-gray-500  py-4 md:text-xl text-sm textNowrap ">
-                     {area}
+                      {area}
                     </td>
                   </tr>
-                  <tr >
+                  <tr>
                     <td className="px-6 py-4 bg-gray-200 font-bold md:text-xl">
-                      <div className=" text-gray-900">
-                      Built Year
-                      </div>
+                      <div className=" text-gray-900">Built Year</div>
                     </td>
                     <td className="px-6 text-gray-500 bg-gray-200 py-4 md:text-xl text-sm textNowrap ">
-                     {built_year}
+                      {built_year}
                     </td>
-                    
                   </tr>
                   <tr className="*:w-full">
                     <td className="px-6 py-4  font-bold md:text-xl">
-                      <div className=" text-gray-900">
-                      Location
-                      </div>
+                      <div className=" text-gray-900">Location</div>
                     </td>
                     <td className="px-6 text-gray-500  py-4 md:text-xl text-sm textNowrap ">
-                     {sliceText += "..."}
+                      {(sliceText += "...")}
                     </td>
                   </tr>
-                  <tr >
+                  <tr>
                     <td className="px-6 py-7 bg-gray-200 font-bold md:text-xl">
-                      <div className=" text-gray-900">
-                     
-                      </div>
+                      <div className=" text-gray-900"></div>
                     </td>
-                    <td className="px-6 text-gray-500 bg-gray-200 py-7 md:text-xl text-sm textNowrap ">
-                     
-                    </td>
-                    
+                    <td className="px-6 text-gray-500 bg-gray-200 py-7 md:text-xl text-sm textNowrap "></td>
                   </tr>
                 </tbody>
               </table>
             </div>
           )}
           {!isValue && (
-            <div className="bg-[#2d2d2d] -mt-[0.5px] w-full p-10  text-white">
+            <div className="bg-[#2d2d2d] -mt-[0.5px] w-full p-10  text-white rounded">
               <ul className="list-decimal space-y-5 md:ml-10 ml-5">
-                {
-                  facilities.map((facility, index) => <li className="md:text-2xl text-xl font-bold" key={index}>{facility}</li>)
-                }
+                {facilities.map((facility, index) => (
+                  <li className="md:text-2xl text-xl font-bold" key={index}>
+                    {facility}
+                  </li>
+                ))}
               </ul>
             </div>
           )}
         </div>
         {/* map section */}
         <div>
-
+          <h1 className="bg-[#2d2d2d] text-3xl font-bold text-white px-6 py-6 text-start rounded-t">
+            GET DIRECTION
+          </h1>
+          <DirectionMap property={findData} />
         </div>
       </div>
     </div>
