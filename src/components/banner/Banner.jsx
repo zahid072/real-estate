@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import useFetchData from "../../Hooks/useFetchData";
-import { Pagination, Navigation } from "swiper/modules";
+import {Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "animate.css";
@@ -20,6 +20,10 @@ const Banner = () => {
         slidesPerView={1}
         spaceBetween={30}
         loop={true}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
@@ -27,7 +31,7 @@ const Banner = () => {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         }}
-        modules={[Pagination, Navigation]}
+        modules={[Autoplay, Pagination, Navigation]}
       >
         {sliceData.map((property) => (
           <SwiperSlide className="w-full" key={property.id}>

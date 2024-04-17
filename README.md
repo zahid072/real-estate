@@ -5,7 +5,8 @@ Live : https://a8-universal-real-estates.netlify.app/
 USE NPM Package:
  1. Animated Css,
  2. React Hook form, 
- 3. Swiper slider
+ 3. Swiper slider,
+ 4. React Leaflet
 
 Description:
 1. Responsive design ensures optimal viewing on all devices: laptop, tablet, and mobile.
