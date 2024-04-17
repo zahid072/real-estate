@@ -5,6 +5,7 @@ import useFetchData from "../../Hooks/useFetchData";
 import { Link } from "react-router-dom";
 import { MdDateRange } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
+import { Helmet } from "react-helmet";
 
 const Favorite = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -29,6 +30,12 @@ const Favorite = () => {
 
 
   return (
+    <>
+     <Helmet>
+        <meta charSet="utf-8" />
+        <title>Favorites || Universal Estate</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
     <div className="pb-10">
       <h1 className="lg:text-5xl md:text-4xl text-2xl font-bold text-center py-24 bg-gradient-to-r transition from-green-400 to-blue-500 rounded">
         My Favorite
@@ -207,6 +214,7 @@ const Favorite = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 
