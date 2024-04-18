@@ -3,6 +3,7 @@ import useFetchData from "../../Hooks/useFetchData";
 import { Helmet } from "react-helmet";
 import Banner from "../../components/banner/Banner";
 import DefaultCard from "../../components/defaultCard/DefaultCard";
+import { ToastContainer, toast } from "react-toastify";
 
 const Home = () => {
   const [showData, setShowData] = useState(false);
@@ -10,6 +11,10 @@ const Home = () => {
   const sliceData = showData ? data : data.slice(0, 6);
   const handleSeeAll = () => {
     setShowData(true);
+  };
+
+  const showToast = () => {
+    toast.success("Successfully added to your favorite list.");
   };
   return (
     <div>
@@ -248,7 +253,11 @@ const Home = () => {
         )}
         <div className="grid lg:grid-cols-3 md:px-24 mt-5 md:grid-cols-2 grid-cols-1 justify-items-center gap-5">
           {sliceData.map((estate) => (
-            <DefaultCard key={estate.id} estate={estate} />
+            <DefaultCard
+              key={estate.id}
+              showToast={showToast}
+              estate={estate}
+            />
           ))}
         </div>
         <div className="w-32 mx-auto mt-3">
@@ -262,6 +271,7 @@ const Home = () => {
           )}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

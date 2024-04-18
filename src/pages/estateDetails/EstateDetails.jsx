@@ -6,6 +6,7 @@ import { FaLocationDot, FaStar } from "react-icons/fa6";
 import { FaRegStar, FaShareAlt } from "react-icons/fa";
 import { getStoredId, removeId, saveId } from "../../Utilities/LocalStorage";
 import DirectionMap from "../../components/directionMap/DirectionMap";
+import { ToastContainer, toast } from "react-toastify";
 
 const EstateDetails = () => {
   const [isValue, setIsValue] = useState(true);
@@ -41,6 +42,7 @@ const EstateDetails = () => {
     if (!localId.includes(id)) {
       saveId(id, "favorite-property");
       setIsFavorite(true);
+      toast.success("Successfully added to your favorite list.");
     }
     if (localId.includes(id)) {
       removeId(id, "favorite-property");
@@ -227,6 +229,7 @@ const EstateDetails = () => {
           <DirectionMap property={findData} />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

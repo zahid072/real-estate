@@ -7,7 +7,7 @@ import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { getStoredId, removeId, saveId } from "../../Utilities/LocalStorage";
 import { AuthContext } from "../../provider/AuthProvider";
 
-const DefaultCard = ({ estate }) => {
+const DefaultCard = ({ estate, showToast }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
@@ -33,6 +33,7 @@ const DefaultCard = ({ estate }) => {
     if (!localId.includes(id)) {
       saveId(id, "favorite-property");
       setIsFavorite(true);
+      showToast();
     }
     if (localId.includes(id)) {
       removeId(id, "favorite-property");
@@ -49,7 +50,7 @@ const DefaultCard = ({ estate }) => {
   }, [localId]);
   return (
     <>
-      <div className="card w-full p-5 border border-[#3f3e3e2f] bg-base-100 animate__animated animate__fadeInUp">
+      <div className="card w-full rounded-md p-5 border border-[#3f3e3e2f] bg-base-100 animate__animated animate__fadeInUp">
         <figure>
           <div
             style={{
