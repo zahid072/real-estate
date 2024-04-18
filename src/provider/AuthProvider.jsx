@@ -23,8 +23,7 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const signInUsers = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password)
-
+    return signInWithEmailAndPassword(auth, email, password);
   };
   const signInWithGoogle = () => {
     return signInWithPopup(auth, googleProvider);
@@ -33,25 +32,25 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, gitHubProvider);
   };
   const updateUserProfile = (name, photo, Email) => {
-    if(name && photo ){
+    if (name && photo) {
       return updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: photo,
-      }).then(()=>{
-        setUser({displayName : name, photoURL : photo, email:Email})
-      })
-    }else if(name){
+      }).then(() => {
+        setUser({ displayName: name, photoURL: photo, email: Email });
+      });
+    } else if (name) {
       return updateProfile(auth.currentUser, {
         displayName: name,
-      }).then(()=>{
-        setUser({displayName : name, photoURL : photo})
-      })
-    }else{
+      }).then(() => {
+        setUser({ displayName: name, photoURL: photo });
+      });
+    } else {
       return updateProfile(auth.currentUser, {
         photoURL: photo,
-      }).then(()=>{
-        setUser({displayName : name, photoURL : photo})
-      })
+      }).then(() => {
+        setUser({ displayName: name, photoURL: photo });
+      });
     }
   };
   const logOut = () => {
@@ -71,6 +70,7 @@ const AuthProvider = ({ children }) => {
     user,
     loader,
     signInUsers,
+    signUpUsers,
     signInWithGoogle,
     signInWithGitHub,
     updateUserProfile,
