@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const Nav = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, navLoader, logOut } = useContext(AuthContext);
 
   const handleSignOut = () => {
     logOut();
@@ -13,10 +13,11 @@ const Nav = () => {
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
-      <li>
-        <NavLink to={"/updateProfile"}>Update Profile</NavLink>
-      </li>
-
+      {user && (
+        <li>
+          <NavLink to={"/updateProfile"}>Update Profile</NavLink>
+        </li>
+      )}
       <li>
         <NavLink to={"/favorite"}>Favorites</NavLink>
       </li>
@@ -80,35 +81,41 @@ const Nav = () => {
           <ul className="menu menu-horizontal px-1">{navLink}</ul>
         </div>
         <div className="navbar-end">
-          {user && (
-            <div
-              className=" tooltip tooltip-bottom"
-              data-tip={user?.displayName}
-            >
-              <img
-                className="size-12 cursor-pointer rounded-full mr-3"
-                src={
-                  (user?.photoURL && user?.photoURL) ||
-                  "https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
-                }
-                alt=""
-              />
-            </div>
-          )}
+          {!navLoader ? (
+            <>
+              {user && (
+                <div
+                  className=" tooltip tooltip-bottom"
+                  data-tip={user?.displayName}
+                >
+                  <img
+                    className="size-12 cursor-pointer rounded-full mr-3"
+                    src={
+                      (user?.photoURL && user?.photoURL) ||
+                      "https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
+                    }
+                    alt=""
+                  />
+                </div>
+              )}
 
-          {user ? (
-            <button
-              onClick={handleSignOut}
-              className="btn hidden md:block bg-emerald-400 hover:bg-emerald-600 hover:text-white"
-            >
-              Sign Out
-            </button>
+              {user ? (
+                <button
+                  onClick={handleSignOut}
+                  className="btn hidden md:block bg-emerald-400 hover:bg-emerald-600 hover:text-white"
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <Link to={"/signIn"}>
+                  <button className="btn hidden bg-emerald-400 hover:bg-emerald-600 hover:text-white md:block">
+                    Sign In
+                  </button>
+                </Link>
+              )}
+            </>
           ) : (
-            <Link to={"/signIn"}>
-              <button className="btn hidden bg-emerald-400 hover:bg-emerald-600 hover:text-white md:block">
-                Sign In
-              </button>
-            </Link>
+            <span className="loading loading-spinner loading-lg mr-10"></span>
           )}
         </div>
       </div>

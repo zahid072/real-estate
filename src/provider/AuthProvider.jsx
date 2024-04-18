@@ -15,6 +15,7 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [navLoader, setNavLoader] = useState(false);
   const googleProvider = new GoogleAuthProvider();
   const gitHubProvider = new GithubAuthProvider();
   const [loader, setLoader] = useState(true);
@@ -57,8 +58,10 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
   useEffect(() => {
+    setNavLoader(true)
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setNavLoader(false)
       setLoader(false);
     });
     return () => {
@@ -69,6 +72,7 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     loader,
+    navLoader,
     signInUsers,
     signUpUsers,
     signInWithGoogle,

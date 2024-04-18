@@ -136,7 +136,7 @@ const EstateDetails = () => {
           </div>
 
           {isValue && (
-            <div className="bg-[#2d2d2d] -mt-[0.5px] w-full py-10 px-5 text-white rounded">
+            <div className="bg-[#2d2d2d] -mt-[0.5px] w-full py-10 md:px-5 px-2 text-white rounded">
               <table className="min-w-full divide-y divide-gray-200 flex md:flex-row flex-col">
                 <tbody className="bg-white md:border-r border-black divide-y w-full divide-gray-200">
                   <tr>
